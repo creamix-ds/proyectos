@@ -1,1 +1,0 @@
-<?php include 'views/layout/header.php'; ?><h2>Bienvenido al Dashboard</h2><?php include 'views/layout/footer.php'; ?>
