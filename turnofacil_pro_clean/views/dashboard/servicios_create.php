@@ -1,0 +1,1 @@
+<?php include 'views/layout/header.php'; ?><div class='card'><h2>Nuevo servicio</h2><form method='POST' action='servicios_store'><input name='nombre'><textarea name='descripcion'></textarea><input name='duracion'><input name='precio'><button>Guardar</button></form></div><?php include 'views/layout/footer.php'; ?>

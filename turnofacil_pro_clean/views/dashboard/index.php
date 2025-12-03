@@ -1,0 +1,1 @@
+<?php include 'views/layout/header.php'; ?><h2>Bienvenido al panel</h2><?php include 'views/layout/footer.php'; ?>
