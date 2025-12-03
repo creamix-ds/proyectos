@@ -1,0 +1,9 @@
+<html><head>
+<link rel='stylesheet' href='public/css/styles.css'>
+</head><body>
+<div class='navbar'>
+    <a href='dashboard'>Dashboard</a> | 
+    <a href='servicios'>Servicios</a> |
+    <a href='turnos'>Turnos</a>
+</div>
+<div class='container'>
