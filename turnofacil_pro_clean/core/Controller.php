@@ -1,1 +1,0 @@
-<?php class Controller{ protected function view($p,$data=[]){extract($data);require 'views/'.$p.'.php';}}

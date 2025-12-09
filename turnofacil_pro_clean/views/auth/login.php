@@ -1,1 +1,0 @@
-<?php include 'views/layout/header.php'; ?><div class='card'><h2>Iniciar sesión</h2><form method='POST' action='login_submit'><input name='email' placeholder='Email'><input type='password' name='password' placeholder='Contraseña'><button>Ingresar</button></form></div><?php include 'views/layout/footer.php'; ?>
