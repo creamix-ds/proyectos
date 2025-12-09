@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalBites - Carta Online</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>LocalBites</h1>
+    <p>Menú digital moderno para tu restaurante</p>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Nuestros platos</h2>
+      <div id="dishes" class="grid"></div>
+    </section>
+
+    <section class="order-section">
+      <h2>Hacer un pedido demo</h2>
+      <form id="orderForm">
+        <label>Plato (ID)
+          <input type="number" id="dish_id" required>
+        </label>
+        <label>Nombre
+          <input type="text" id="customer_name" required>
+        </label>
+        <label>Notas
+          <textarea id="notes"></textarea>
+        </label>
+        <button type="submit">Enviar pedido</button>
+      </form>
+      <pre id="orderResult"></pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
