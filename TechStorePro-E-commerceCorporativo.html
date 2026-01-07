@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechStore Pro - E-commerce Corporativo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    * {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    
+    .product-card {
+      transition: all 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #ef4444;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ef4444;
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    
+    .btn-primary {
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full" style="background: #f8fafc; margin: 0; padding: 0;">
+  <div class="w-full h-full overflow-auto"><!-- Header -->
+   <header style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+     <div>
+      <h1 id="store-name" style="font-size: 1.5rem; font-weight: 800; color: #1e293b; margin: 0;">TechStore Pro</h1>
+      <p id="store-tagline" style="font-size: 0.875rem; color: #64748b; margin: 0;">Tu tecnología, nuestro compromiso</p>
+     </div>
+     <div style="display: flex; gap: 2rem; align-items: center;"><a href="#productos" style="color: #475569; text-decoration: none; font-weight: 500;">Productos</a> <a href="#sobre-nosotros" style="color: #475569; text-decoration: none; font-weight: 500;">Nosotros</a>
+      <div style="position: relative; cursor: pointer;"><span style="font-size: 1.5rem;">🛒</span> <span id="cart-count" class="cart-badge">0</span>
+      </div>
+     </div>
+    </div>
+   </header><!-- Hero Section -->
+   <section style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); padding: 5rem 1.5rem; text-align: center; color: white;">
+    <div style="max-width: 900px; margin: 0 auto;">
+     <h2 id="hero-title" style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2;">Los mejores productos tecnológicos al alcance de tu mano</h2>
+     <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95;">Descubre nuestra selección premium de laptops, smartphones y accesorios</p><button id="cta-button" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})" class="btn-primary" style="background: white; color: #3b82f6; padding: 1rem 2.5rem; border: none; border-radius: 9999px; font-size: 1.125rem; font-weight: 700; cursor: pointer;"> Ver Catálogo </button>
+    </div>
+   </section><!-- Products Section -->
+   <section id="productos" style="padding: 5rem 1.5rem; background: #f8fafc;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+     <h2 style="font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 3rem; color: #1e293b;">Productos Destacados</h2>
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;"><!-- Product 1 -->
+      <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative;"><span class="badge">-20%</span>
+       <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+        💻
+       </div>
+       <div style="padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1e293b;">Laptop Pro X15</h3>
+        <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.875rem;">Intel i7, 16GB RAM, 512GB SSD</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+         <div><span style="color: #94a3b8; text-decoration: line-through; font-size: 0.875rem;">$1,299</span> <span style="color: #3b82f6; font-size: 1.5rem; font-weight: 800; margin-left: 0.5rem;">$1,039</span>
+         </div><button onclick="addToCart('Laptop Pro X15', 1039)" style="background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Agregar</button>
+        </div>
+       </div>
+      </div><!-- Product 2 -->
+      <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative;">
+       <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+        📱
+       </div>
+       <div style="padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1e293b;">Smartphone Ultra 12</h3>
+        <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.875rem;">6.7" OLED, 256GB, Cámara 108MP</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;"><span style="color: #3b82f6; font-size: 1.5rem; font-weight: 800;">$899</span> <button onclick="addToCart('Smartphone Ultra 12', 899)" style="background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Agregar</button>
+        </div>
+       </div>
+      </div><!-- Product 3 -->
+      <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative;"><span class="badge">Nuevo</span>
+       <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+        🎧
+       </div>
+       <div style="padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1e293b;">Auriculares Pro ANC</h3>
+        <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.875rem;">Cancelación de ruido, 40h batería</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;"><span style="color: #3b82f6; font-size: 1.5rem; font-weight: 800;">$299</span> <button onclick="addToCart('Auriculares Pro ANC', 299)" style="background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Agregar</button>
+        </div>
+       </div>
+      </div><!-- Product 4 -->
+      <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+       <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+        ⌚
+       </div>
+       <div style="padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1e293b;">Smartwatch Elite</h3>
+        <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.875rem;">GPS, Monitor cardíaco, 7 días batería</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;"><span style="color: #3b82f6; font-size: 1.5rem; font-weight: 800;">$399</span> <button onclick="addToCart('Smartwatch Elite', 399)" style="background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Agregar</button>
+        </div>
+       </div>
+      </div><!-- Product 5 -->
+      <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative;"><span class="badge">-15%</span>
+       <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+        ⌨️
+       </div>
+       <div style="padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1e293b;">Teclado Mecánico RGB</h3>
+        <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.875rem;">Switch mecánico, iluminación RGB</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+         <div><span style="color: #94a3b8; text-decoration: line-through; font-size: 0.875rem;">$149</span> <span style="color: #3b82f6; font-size: 1.5rem; font-weight: 800; margin-left: 0.5rem;">$127</span>
+         </div><button onclick="addToCart('Teclado Mecánico RGB', 127)" style="background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Agregar</button>
+        </div>
+       </div>
+      </div><!-- Product 6 -->
+      <div class="product-card" style="background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+       <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+        🖱️
+       </div>
+       <div style="padding: 1.5rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1e293b;">Mouse Gaming Pro</h3>
+        <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.875rem;">16,000 DPI, 8 botones programables</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;"><span style="color: #3b82f6; font-size: 1.5rem; font-weight: 800;">$79</span> <button onclick="addToCart('Mouse Gaming Pro', 79)" style="background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Agregar</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="sobre-nosotros" style="padding: 5rem 1.5rem; background: white;">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+     <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; color: #1e293b;">¿Por qué elegirnos?</h2>
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-top: 3rem;">
+      <div>
+       <div style="font-size: 3rem; margin-bottom: 1rem;">
+        🚚
+       </div>
+       <h3 style="font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Envío Gratis</h3>
+       <p style="color: #64748b;">En compras mayores a $500</p>
+      </div>
+      <div>
+       <div style="font-size: 3rem; margin-bottom: 1rem;">
+        🔒
+       </div>
+       <h3 style="font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Pago Seguro</h3>
+       <p style="color: #64748b;">Protección total en tus compras</p>
+      </div>
+      <div>
+       <div style="font-size: 3rem; margin-bottom: 1rem;">
+        🎁
+       </div>
+       <h3 style="font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">Garantía Extendida</h3>
+       <p style="color: #64748b;">2 años en todos los productos</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer style="background: #1e293b; color: white; padding: 3rem 1.5rem; text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+     <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;">TechStore Pro</h3>
+     <p style="color: #94a3b8; margin-bottom: 1rem;">E-commerce corporativo desarrollado por CreaMix-ds</p>
+     <p style="color: #64748b; font-size: 0.875rem;">© 2024 TechStore Pro. Todos los derechos reservados.</p>
+    </div>
+   </footer><!-- Toast Notification -->
+   <div id="toast" style="position: fixed; bottom: 2rem; right: 2rem; background: #10b981; color: white; padding: 1rem 2rem; border-radius: 0.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: none; z-index: 1000; animation: slideIn 0.3s ease;">
+    Producto agregado al carrito
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#f8fafc",
+      surface_color: "#ffffff",
+      text_color: "#1e293b",
+      primary_action_color: "#3b82f6",
+      secondary_action_color: "#64748b",
+      font_family: "Inter",
+      font_size: 16,
+      store_name: "TechStore Pro",
+      store_tagline: "Tu tecnología, nuestro compromiso",
+      hero_title: "Los mejores productos tecnológicos al alcance de tu mano",
+      cta_button: "Ver Catálogo"
+    };
+
+    let cartCount = 0;
+
+    function addToCart(productName, price) {
+      cartCount++;
+      document.getElementById('cart-count').textContent = cartCount;
+      
+      const toast = document.getElementById('toast');
+      toast.textContent = `${productName} agregado al carrito - $${price}`;
+      toast.style.display = 'block';
+      
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          const customFont = config.font_family || defaultConfig.font_family;
+          const baseFontStack = 'system-ui, sans-serif';
+          const baseSize = config.font_size || defaultConfig.font_size;
+          
+          document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+          document.body.style.fontSize = `${baseSize}px`;
+          
+          document.getElementById('store-name').textContent = config.store_name || defaultConfig.store_name;
+          document.getElementById('store-tagline').textContent = config.store_tagline || defaultConfig.store_tagline;
+          document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+          document.getElementById('cta-button').textContent = config.cta_button || defaultConfig.cta_button;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["store_name", config.store_name || defaultConfig.store_name],
+          ["store_tagline", config.store_tagline || defaultConfig.store_tagline],
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          ["cta_button", config.cta_button || defaultConfig.cta_button]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ba5f41ce0416ccb',t:'MTc2NzgxNTEwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
