@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Zone - Tu entrenador personal en casa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .app-container {
+      min-height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    /* Header */
+    .header {
+      background: rgba(15, 12, 41, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 24px 0;
+      border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 36px;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a:hover {
+      color: #ffd700;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 100px 24px;
+      text-align: center;
+      background: 
+        radial-gradient(ellipse at top, rgba(255, 215, 0, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom, rgba(255, 107, 53, 0.1) 0%, transparent 60%);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '💪';
+      position: absolute;
+      font-size: 200px;
+      opacity: 0.05;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 72px;
+      margin-bottom: 16px;
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 22px;
+      color: #c0c0c0;
+      margin-bottom: 48px;
+      font-weight: 500;
+    }
+
+    .cta-button {
+      padding: 20px 60px;
+      background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+      color: #0f0c29;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.6);
+    }
+
+    /* Form Section */
+    .form-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .form-container {
+      background: rgba(48, 43, 99, 0.4);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 32px;
+      letter-spacing: 2px;
+      color: #ffd700;
+    }
+
+    .form-group {
+      margin-bottom: 28px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffd700;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 16px 20px;
+      background: rgba(15, 12, 41, 0.8);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 12px;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: #ffd700;
+      box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.1);
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-select option {
+      background: #0f0c29;
+      color: #ffffff;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+      color: #0f0c29;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 16px;
+    }
+
+    .submit-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.4);
+    }
+
+    .submit-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Results Section */
+    .results-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      display: none;
+    }
+
+    .results-section.active {
+      display: block;
+    }
+
+    .results-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .results-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 48px;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+      color: #ffd700;
+    }
+
+    .results-subtitle {
+      font-size: 18px;
+      color: #c0c0c0;
+    }
+
+    .profile-card {
+      background: rgba(48, 43, 99, 0.4);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 20px;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 12px;
+    }
+
+    .stat-value {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 36px;
+      color: #ffd700;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #c0c0c0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .exercises-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .exercise-card {
+      background: rgba(48, 43, 99, 0.4);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .exercise-card:hover {
+      transform: translateY(-8px);
+      border-color: #ffd700;
+      box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+    }
+
+    .favorite-button {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255, 215, 0, 0.2);
+      border: 2px solid rgba(255, 215, 0, 0.4);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .favorite-button:hover {
+      background: rgba(255, 215, 0, 0.4);
+      transform: scale(1.1);
+    }
+
+    .favorite-button.active {
+      background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+      border-color: #ffd700;
+    }
+
+    .exercise-icon {
+      font-size: 56px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .exercise-name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      color: #ffd700;
+    }
+
+    .exercise-description {
+      color: #c0c0c0;
+      font-size: 15px;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .exercise-details {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .detail-badge {
+      padding: 8px 16px;
+      background: rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffd700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 14px 36px;
+      background: rgba(255, 215, 0, 0.2);
+      color: #ffd700;
+      border: 2px solid rgba(255, 215, 0, 0.4);
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 215, 0, 0.3);
+      border-color: #ffd700;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      padding: 20px 32px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+      animation: slideIn 0.4s ease-out;
+      z-index: 2000;
+      backdrop-filter: blur(10px);
+    }
+
+    .toast.success {
+      background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .toast.error {
+      background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .slide-out {
+      animation: slideOut 0.3s ease-out forwards;
+    }
+
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .form-container {
+        padding: 32px 24px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .exercises-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="app-container"><!-- Header -->
+   <header class="header">
+    <div class="header-content">
+     <div class="logo" id="logoText">
+      FITNESS ZONE
+     </div>
+     <ul class="nav-links">
+      <li><a href="#inicio" onclick="showForm()">Inicio</a></li>
+      <li><a href="#favoritos" onclick="showFavorites()">Favoritos</a></li>
+      <li><a href="#perfil" onclick="showProfile()">Mi Perfil</a></li>
+     </ul>
+    </div>
+   </header><!-- Hero Section -->
+   <section class="hero" id="heroSection">
+    <div class="hero-content">
+     <h1 id="mainTitle">FITNESS ZONE</h1>
+     <p id="mainSubtitle">Tu entrenador personal en casa</p><button class="cta-button" id="ctaButton" onclick="scrollToForm()">Comenzar ahora</button>
+    </div>
+   </section><!-- Form Section -->
+   <section class="form-section" id="formSection">
+    <div class="form-container">
+     <h2 class="form-title">Crea tu perfil</h2>
+     <form id="fitnessForm">
+      <div class="form-group"><label for="username" class="form-label">Nombre de usuario</label> <input type="text" id="username" class="form-input" placeholder="Tu nombre" required minlength="3">
+      </div>
+      <div class="form-group"><label for="password" class="form-label">Contraseña (por defecto: 1234)</label> <input type="password" id="password" class="form-input" placeholder="1234" value="1234" required minlength="4">
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="weight" class="form-label">Peso (kg)</label> <input type="number" id="weight" class="form-input" placeholder="70" required min="30" max="300">
+       </div>
+       <div class="form-group"><label for="height" class="form-label">Altura (cm)</label> <input type="number" id="height" class="form-input" placeholder="170" required min="100" max="250">
+       </div>
+       <div class="form-group"><label for="age" class="form-label">Edad</label> <input type="number" id="age" class="form-input" placeholder="25" required min="15" max="100">
+       </div>
+      </div>
+      <div class="form-group"><label for="fitnessLevel" class="form-label">Nivel de condición física</label> <select id="fitnessLevel" class="form-select" required> <option value="">Selecciona tu nivel</option> <option value="beginner">Principiante - Recién empiezo</option> <option value="intermediate">Intermedio - Entreno regularmente</option> <option value="advanced">Avanzado - Entreno intensamente</option> </select>
+      </div>
+      <div class="form-group"><label for="goal" class="form-label">Objetivo principal</label> <select id="goal" class="form-select" required> <option value="">Selecciona tu objetivo</option> <option value="lose_weight">Perder peso</option> <option value="build_muscle">Ganar músculo</option> <option value="tone">Tonificar cuerpo</option> <option value="flexibility">Mejorar flexibilidad</option> <option value="endurance">Aumentar resistencia</option> </select>
+      </div><button type="submit" class="submit-button" id="submitButton">Obtener mi rutina</button>
+     </form>
+    </div>
+   </section><!-- Results Section -->
+   <section class="results-section" id="resultsSection"><button class="back-button" onclick="showForm()">← Volver al formulario</button>
+    <div class="results-header">
+     <h2 class="results-title">Tu rutina personalizada</h2>
+     <p class="results-subtitle">Ejercicios diseñados para tu perfil y objetivos</p>
+    </div>
+    <div class="profile-card">
+     <div class="profile-stats" id="profileStats"></div>
+    </div>
+    <div class="exercises-grid" id="exercisesGrid"></div>
+   </section><!-- Favorites Section -->
+   <section class="results-section" id="favoritesSection"><button class="back-button" onclick="showForm()">← Volver al inicio</button>
+    <div class="results-header">
+     <h2 class="results-title">Mis ejercicios favoritos</h2>
+     <p class="results-subtitle" id="favoritesSubtitle">Guarda tus ejercicios preferidos aquí</p>
+    </div>
+    <div class="exercises-grid" id="favoritesGrid"></div>
+   </section><!-- Profile Section -->
+   <section class="results-section" id="profileSection"><button class="back-button" onclick="showForm()">← Volver al inicio</button>
+    <div class="results-header">
+     <h2 class="results-title">Mi Perfil</h2>
+     <p class="results-subtitle">Administra tu información personal</p>
+    </div>
+    <div class="form-container" style="max-width: 600px; margin: 0 auto;">
+     <form id="profileForm">
+      <div class="form-group"><label for="profileUsername" class="form-label">Nombre de usuario</label> <input type="text" id="profileUsername" class="form-input" readonly>
+      </div>
+      <div class="form-group"><label for="currentPassword" class="form-label">Contraseña actual</label> <input type="password" id="currentPassword" class="form-input" placeholder="Ingresa tu contraseña actual" required>
+      </div>
+      <div class="form-group"><label for="newPassword" class="form-label">Nueva contraseña</label> <input type="password" id="newPassword" class="form-input" placeholder="Nueva contraseña (mínimo 4 caracteres)" minlength="4">
+      </div>
+      <div class="form-group"><label for="profileWeight" class="form-label">Peso (kg)</label> <input type="number" id="profileWeight" class="form-input" min="30" max="300">
+      </div>
+      <div class="form-group"><label for="profileHeight" class="form-label">Altura (cm)</label> <input type="number" id="profileHeight" class="form-input" min="100" max="250">
+      </div>
+      <div class="form-group"><label for="profileAge" class="form-label">Edad</label> <input type="number" id="profileAge" class="form-input" min="15" max="100">
+      </div><button type="submit" class="submit-button" id="updateProfileButton">Actualizar Perfil</button>
+     </form>
+    </div>
+   </section>
+  </div>
+  <script>
+    // Data SDK Integration
+    let userProfiles = [];
+    let currentProfile = null;
+    let currentUser = null;
+
+    const dataHandler = {
+      onDataChanged(data) {
+        userProfiles = data;
+        console.log('User profiles updated:', userProfiles.length);
+        
+        // Update current user if logged in
+        if (currentUser) {
+          const updatedUser = userProfiles.find(p => p.__backendId === currentUser.__backendId);
+          if (updatedUser) {
+            currentUser = updatedUser;
+            currentProfile = updatedUser;
+          }
+        }
+      }
+    };
+
+    // Initialize Data SDK
+    async function initDataSdk() {
+      if (window.dataSdk) {
+        const initResult = await window.dataSdk.init(dataHandler);
+        if (!initResult.isOk) {
+          console.error('Failed to initialize Data SDK');
+        }
+      }
+    }
+
+    initDataSdk();
+
+    // Elements SDK Integration
+    const defaultConfig = {
+      main_title: 'FITNESS ZONE',
+      main_subtitle: 'Tu entrenador personal en casa',
+      cta_button: 'Comenzar ahora'
+    };
+
+    async function onConfigChange(config) {
+      const mainTitle = document.getElementById('mainTitle');
+      const mainSubtitle = document.getElementById('mainSubtitle');
+      const ctaButton = document.getElementById('ctaButton');
+      const logoText = document.getElementById('logoText');
+
+      if (mainTitle) mainTitle.textContent = config.main_title || defaultConfig.main_title;
+      if (mainSubtitle) mainSubtitle.textContent = config.main_subtitle || defaultConfig.main_subtitle;
+      if (ctaButton) ctaButton.textContent = config.cta_button || defaultConfig.cta_button;
+      if (logoText) logoText.textContent = config.main_title || defaultConfig.main_title;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['main_title', config.main_title || defaultConfig.main_title],
+        ['main_subtitle', config.main_subtitle || defaultConfig.main_subtitle],
+        ['cta_button', config.cta_button || defaultConfig.cta_button]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Exercise Database
+    const exerciseDatabase = {
+      beginner: {
+        lose_weight: [
+          { icon: '🚶', name: 'Caminata en casa', description: 'Camina en tu lugar levantando las rodillas durante 20 minutos', duration: '20 min', intensity: 'Baja' },
+          { icon: '🧘', name: 'Yoga básico', description: 'Posturas suaves para activar el metabolismo y mejorar flexibilidad', duration: '15 min', intensity: 'Baja' },
+          { icon: '���', name: 'Sentadillas básicas', description: 'Series de 10 repeticiones, 3 veces. Descanso de 1 minuto entre series', duration: '10 min', intensity: 'Media' },
+          { icon: '🏃', name: 'Jumping jacks', description: 'Saltos abriendo piernas y brazos. 3 series de 20 repeticiones', duration: '8 min', intensity: 'Media' }
+        ],
+        build_muscle: [
+          { icon: '💪', name: 'Flexiones de pared', description: 'Apoya las manos en la pared y haz flexiones. 3 series de 10', duration: '10 min', intensity: 'Baja' },
+          { icon: '🦵', name: 'Sentadillas básicas', description: 'Con peso corporal. 4 series de 12 repeticiones', duration: '15 min', intensity: 'Media' },
+          { icon: '🏋️', name: 'Plancha', description: 'Mantén la posición 30 segundos. 3 repeticiones', duration: '5 min', intensity: 'Media' },
+          { icon: '💪', name: 'Fondos en silla', description: 'Usa una silla para trabajar tríceps. 3 series de 10', duration: '10 min', intensity: 'Media' }
+        ],
+        tone: [
+          { icon: '🧘', name: 'Pilates básico', description: 'Ejercicios de core y postura. Movimientos controlados', duration: '20 min', intensity: 'Baja' },
+          { icon: '💪', name: 'Elevaciones de pierna', description: 'Acostado, eleva piernas alternadas. 3 series de 15', duration: '12 min', intensity: 'Baja' },
+          { icon: '🦵', name: 'Estocadas estáticas', description: 'Mantén la posición de estocada. 3 series de 30 segundos por pierna', duration: '10 min', intensity: 'Media' },
+          { icon: '🏋️', name: 'Plancha lateral', description: 'Trabaja oblicuos. 3 series de 20 segundos por lado', duration: '8 min', intensity: 'Media' }
+        ],
+        flexibility: [
+          { icon: '🧘', name: 'Yoga para flexibilidad', description: 'Posturas de estiramiento suave y respiración', duration: '25 min', intensity: 'Baja' },
+          { icon: '🤸', name: 'Estiramientos dinámicos', description: 'Movimientos fluidos para mejorar rango de movimiento', duration: '15 min', intensity: 'Baja' },
+          { icon: '🦵', name: 'Estiramiento de piernas', description: 'Toca tus dedos del pie, mantén 30 segundos', duration: '10 min', intensity: 'Baja' },
+          { icon: '💪', name: 'Rotaciones de hombros', description: 'Círculos amplios con los brazos', duration: '8 min', intensity: 'Baja' }
+        ],
+        endurance: [
+          { icon: '🚶', name: 'Caminata rápida', description: 'Camina a paso rápido en tu lugar durante 20 minutos', duration: '20 min', intensity: 'Media' },
+          { icon: '🏃', name: 'Trote suave en sitio', description: 'Trota levantando rodillas moderadamente', duration: '15 min', intensity: 'Media' },
+          { icon: '💪', name: 'Burpees modificados', description: 'Sin salto. 3 series de 8 repeticiones', duration: '10 min', intensity: 'Media' },
+          { icon: '🧗', name: 'Escaladores lentos', description: 'Mountain climbers a ritmo controlado. 3 series de 20', duration: '12 min', intensity: 'Media' }
+        ]
+      },
+      intermediate: {
+        lose_weight: [
+          { icon: '🏃', name: 'HIIT básico', description: 'Intervalos de alta intensidad. 30 seg trabajo, 30 seg descanso', duration: '20 min', intensity: 'Alta' },
+          { icon: '💪', name: 'Burpees', description: 'Ejercicio completo. 4 series de 12 repeticiones', duration: '15 min', intensity: 'Alta' },
+          { icon: '🦵', name: 'Sentadillas con salto', description: 'Sentadilla explosiva. 4 series de 15', duration: '12 min', intensity: 'Alta' },
+          { icon: '🧗', name: 'Mountain climbers', description: 'Escaladores rápidos. 4 series de 30 segundos', duration: '10 min', intensity: 'Alta' }
+        ],
+        build_muscle: [
+          { icon: '💪', name: 'Flexiones estándar', description: 'Flexiones completas. 4 series de 15 repeticiones', duration: '12 min', intensity: 'Media' },
+          { icon: '🦵', name: 'Sentadillas búlgaras', description: 'Con pie elevado. 4 series de 12 por pierna', duration: '15 min', intensity: 'Alta' },
+          { icon: '🏋️', name: 'Plancha con elevación', description: 'Alterna elevando brazos. 4 series de 45 segundos', duration: '10 min', intensity: 'Media' },
+          { icon: '💪', name: 'Flexiones diamante', description: 'Manos juntas para tríceps. 4 series de 10', duration: '12 min', intensity: 'Alta' }
+        ],
+        tone: [
+          { icon: '🧘', name: 'Pilates avanzado', description: 'Ejercicios de core con más intensidad', duration: '25 min', intensity: 'Media' },
+          { icon: '🦵', name: 'Estocadas caminando', description: 'Avanza con estocadas. 4 series de 20 pasos', duration: '15 min', intensity: 'Media' },
+          { icon: '💪', name: 'Puente de glúteos', description: 'Eleva cadera. 4 series de 20 repeticiones', duration: '12 min', intensity: 'Media' },
+          { icon: '🏋️', name: 'Plancha con rotación', description: 'Gira el tronco en plancha. 4 series de 12', duration: '10 min', intensity: 'Media' }
+        ],
+        flexibility: [
+          { icon: '🧘', name: 'Yoga flow intermedio', description: 'Secuencias dinámicas de posturas', duration: '30 min', intensity: 'Media' },
+          { icon: '🤸', name: 'Estiramientos profundos', description: 'Mantén cada postura 45 segundos', duration: '20 min', intensity: 'Baja' },
+          { icon: '🦵', name: 'Split progresivo', description: 'Trabajo gradual hacia el split completo', duration: '15 min', intensity: 'Media' },
+          { icon: '💪', name: 'Movilidad de cadera', description: 'Círculos y rotaciones amplias', duration: '12 min', intensity: 'Media' }
+        ],
+        endurance: [
+          { icon: '🏃', name: 'Trote con intervalos', description: 'Alterna velocidad cada 2 minutos', duration: '25 min', intensity: 'Alta' },
+          { icon: '💪', name: 'Circuito metabólico', description: '5 ejercicios, 45 seg cada uno, 4 rondas', duration: '20 min', intensity: 'Alta' },
+          { icon: '🧗', name: 'Escaladores avanzados', description: 'Mountain climbers rápidos. 5 series de 45 seg', duration: '15 min', intensity: 'Alta' },
+          { icon: '🦵', name: 'Saltos de rana', description: 'Saltos amplios hacia adelante. 4 series de 15', duration: '12 min', intensity: 'Alta' }
+        ]
+      },
+      advanced: {
+        lose_weight: [
+          { icon: '🏃', name: 'HIIT avanzado', description: 'Intervalos intensos. 40 seg trabajo, 20 seg descanso', duration: '30 min', intensity: 'Muy Alta' },
+          { icon: '💪', name: 'Burpees con flexión', description: 'Burpee completo con flexión. 5 series de 15', duration: '20 min', intensity: 'Muy Alta' },
+          { icon: '🦵', name: 'Sentadillas pistol', description: 'Sentadillas a una pierna. 4 series de 8 por lado', duration: '15 min', intensity: 'Muy Alta' },
+          { icon: '🧗', name: 'Tábata extremo', description: '8 ejercicios, 20 seg cada uno, máxima intensidad', duration: '25 min', intensity: 'Muy Alta' }
+        ],
+        build_muscle: [
+          { icon: '💪', name: 'Flexiones explosivas', description: 'Flexiones con palmada. 5 series de 12', duration: '15 min', intensity: 'Muy Alta' },
+          { icon: '🦵', name: 'Pistol squats', description: 'Sentadilla completa a una pierna. 5 series de 10', duration: '18 min', intensity: 'Muy Alta' },
+          { icon: '🏋️', name: 'Plancha dinámica', description: 'Movimientos complejos en plancha. 5 series de 1 min', duration: '15 min', intensity: 'Alta' },
+          { icon: '💪', name: 'Handstand push-ups', description: 'Flexiones en pino asistido. 4 series de 8', duration: '15 min', intensity: 'Muy Alta' }
+        ],
+        tone: [
+          { icon: '🧘', name: 'Pilates power', description: 'Ejercicios de alta intensidad con control perfecto', duration: '35 min', intensity: 'Alta' },
+          { icon: '🦵', name: 'Estocadas con salto', description: 'Alterna piernas en el aire. 5 series de 20', duration: '18 min', intensity: 'Muy Alta' },
+          { icon: '💪', name: 'L-sit hold', description: 'Mantén posición en L. 5 series de 30 seg', duration: '12 min', intensity: 'Muy Alta' },
+          { icon: '🏋️', name: 'Dragon flag', description: 'Ejercicio avanzado de core. 4 series de 8', duration: '15 min', intensity: 'Muy Alta' }
+        ],
+        flexibility: [
+          { icon: '🧘', name: 'Yoga avanzado', description: 'Posturas complejas y equilibrio extremo', duration: '40 min', intensity: 'Alta' },
+          { icon: '🤸', name: 'Contorsionismo básico', description: 'Flexibilidad extrema de espalda', duration: '30 min', intensity: 'Alta' },
+          { icon: '🦵', name: 'Full split routine', description: 'Split frontal y lateral completo', duration: '25 min', intensity: 'Alta' },
+          { icon: '💪', name: 'Backbend avanzado', description: 'Puentes y flexiones extremas de espalda', duration: '20 min', intensity: 'Alta' }
+        ],
+        endurance: [
+          { icon: '🏃', name: 'Ultra HIIT', description: 'Máxima intensidad sin parar. 40 minutos continuos', duration: '40 min', intensity: 'Muy Alta' },
+          { icon: '💪', name: 'Spartan workout', description: 'Circuito militar completo. 6 rondas', duration: '35 min', intensity: 'Muy Alta' },
+          { icon: '🧗', name: 'CrossFit WOD', description: 'Workout of the day estilo CrossFit', duration: '30 min', intensity: 'Muy Alta' },
+          { icon: '🦵', name: 'Jumping endurance', description: 'Saltos variados sin parar. 5 rondas de 5 min', duration: '25 min', intensity: 'Muy Alta' }
+        ]
+      }
+    };
+
+    // Form handling
+    const fitnessForm = document.getElementById('fitnessForm');
+    const submitButton = document.getElementById('submitButton');
+
+    fitnessForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const weight = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const age = parseInt(document.getElementById('age').value);
+      const fitnessLevel = document.getElementById('fitnessLevel').value;
+      const goal = document.getElementById('goal').value;
+
+      // Disable button
+      submitButton.disabled = true;
+      submitButton.textContent = 'Generando rutina...';
+
+      // Check if username exists
+      const existingUser = userProfiles.find(p => p.username === username);
+      
+      if (existingUser) {
+        // Login
+        if (existingUser.password === password) {
+          currentUser = existingUser;
+          currentProfile = existingUser;
+          showResults(existingUser);
+          showToast('¡Bienvenido de nuevo, ' + username + '!', 'success');
+        } else {
+          showToast('Contraseña incorrecta', 'error');
+          submitButton.disabled = false;
+          submitButton.textContent = 'Obtener mi rutina';
+          return;
+        }
+      } else {
+        // Check data limit
+        if (userProfiles.length >= 999) {
+          showToast('Límite de perfiles alcanzado. Contacta al administrador.', 'error');
+          submitButton.disabled = false;
+          submitButton.textContent = 'Obtener mi rutina';
+          return;
+        }
+
+        // Register new user
+        if (window.dataSdk) {
+          const profileData = {
+            username: username,
+            password: password,
+            weight: weight,
+            height: height,
+            age: age,
+            fitness_level: fitnessLevel,
+            goal: goal,
+            favorite_exercises: '',
+            date: new Date().toISOString()
+          };
+
+          const result = await window.dataSdk.create(profileData);
+
+          if (result.isOk) {
+            // Wait a moment for onDataChanged to update
+            setTimeout(() => {
+              const newUser = userProfiles.find(p => p.username === username);
+              if (newUser) {
+                currentUser = newUser;
+                currentProfile = newUser;
+                showResults(newUser);
+              }
+            }, 500);
+            showToast('¡Perfil creado exitosamente!', 'success');
+          } else {
+            showToast('Error al guardar perfil. Intenta nuevamente.', 'error');
+            submitButton.disabled = false;
+            submitButton.textContent = 'Obtener mi rutina';
+            return;
+          }
+        } else {
+          currentProfile = {
+            username: username,
+            password: password,
+            weight: weight,
+            height: height,
+            age: age,
+            fitness_level: fitnessLevel,
+            goal: goal,
+            favorite_exercises: '',
+            date: new Date().toISOString()
+          };
+          currentUser = currentProfile;
+          showResults(currentProfile);
+          showToast('¡Perfil creado exitosamente!', 'success');
+        }
+      }
+
+      submitButton.disabled = false;
+      submitButton.textContent = 'Obtener mi rutina';
+    });
+
+    function showResults(profile) {
+      // Calculate BMI
+      const heightInMeters = profile.height / 100;
+      const bmi = (profile.weight / (heightInMeters * heightInMeters)).toFixed(1);
+
+      // Update profile stats
+      const profileStats = document.getElementById('profileStats');
+      profileStats.innerHTML = `
+        <div class="stat-item">
+          <div class="stat-value">${profile.weight}</div>
+          <div class="stat-label">Peso (kg)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">${profile.height}</div>
+          <div class="stat-label">Altura (cm)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">${profile.age}</div>
+          <div class="stat-label">Edad</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">${bmi}</div>
+          <div class="stat-label">IMC</div>
+        </div>
+      `;
+
+      // Get exercises
+      const exercises = exerciseDatabase[profile.fitness_level][profile.goal];
+      
+      // Get favorites list
+      const favorites = profile.favorite_exercises ? profile.favorite_exercises.split(',').filter(f => f) : [];
+      
+      // Render exercises
+      const exercisesGrid = document.getElementById('exercisesGrid');
+      exercisesGrid.innerHTML = exercises.map(exercise => {
+        const exerciseId = `${exercise.name.replace(/\s+/g, '_')}`;
+        const isFavorite = favorites.includes(exerciseId);
+        return `
+          <div class="exercise-card">
+            <button class="favorite-button ${isFavorite ? 'active' : ''}" onclick="toggleFavorite('${exerciseId}')">
+              ${isFavorite ? '⭐' : '☆'}
+            </button>
+            <div class="exercise-icon">${exercise.icon}</div>
+            <h3 class="exercise-name">${exercise.name}</h3>
+            <p class="exercise-description">${exercise.description}</p>
+            <div class="exercise-details">
+              <span class="detail-badge">⏱️ ${exercise.duration}</span>
+              <span class="detail-badge">🔥 ${exercise.intensity}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Hide all, show results
+      hideAllSections();
+      document.getElementById('resultsSection').classList.add('active');
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    async function toggleFavorite(exerciseId) {
+      if (!currentUser) {
+        showToast('Debes crear un perfil primero', 'error');
+        return;
+      }
+
+      const favorites = currentUser.favorite_exercises ? currentUser.favorite_exercises.split(',').filter(f => f) : [];
+      const index = favorites.indexOf(exerciseId);
+      
+      if (index > -1) {
+        favorites.splice(index, 1);
+        showToast('Eliminado de favoritos', 'success');
+      } else {
+        favorites.push(exerciseId);
+        showToast('Agregado a favoritos', 'success');
+      }
+
+      currentUser.favorite_exercises = favorites.join(',');
+
+      if (window.dataSdk) {
+        const result = await window.dataSdk.update(currentUser);
+        if (!result.isOk) {
+          showToast('Error al actualizar favoritos', 'error');
+        }
+      }
+    }
+
+    function showFavorites() {
+      if (!currentUser) {
+        showToast('Debes crear un perfil primero', 'error');
+        return;
+      }
+
+      const favorites = currentUser.favorite_exercises ? currentUser.favorite_exercises.split(',').filter(f => f) : [];
+      
+      // Find all exercises from database
+      const allExercises = [];
+      Object.keys(exerciseDatabase).forEach(level => {
+        Object.keys(exerciseDatabase[level]).forEach(goal => {
+          exerciseDatabase[level][goal].forEach(exercise => {
+            const exerciseId = `${exercise.name.replace(/\s+/g, '_')}`;
+            if (favorites.includes(exerciseId)) {
+              allExercises.push(exercise);
+            }
+          });
+        });
+      });
+
+      const favoritesGrid = document.getElementById('favoritesGrid');
+      
+      if (allExercises.length === 0) {
+        favoritesGrid.innerHTML = '<p style="text-align: center; color: #c0c0c0; grid-column: 1/-1;">No tienes ejercicios favoritos aún. Agrega algunos desde tu rutina personalizada.</p>';
+      } else {
+        favoritesGrid.innerHTML = allExercises.map(exercise => {
+          const exerciseId = `${exercise.name.replace(/\s+/g, '_')}`;
+          return `
+            <div class="exercise-card">
+              <button class="favorite-button active" onclick="toggleFavoriteFromList('${exerciseId}')">⭐</button>
+              <div class="exercise-icon">${exercise.icon}</div>
+              <h3 class="exercise-name">${exercise.name}</h3>
+              <p class="exercise-description">${exercise.description}</p>
+              <div class="exercise-details">
+                <span class="detail-badge">⏱️ ${exercise.duration}</span>
+                <span class="detail-badge">🔥 ${exercise.intensity}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('favoritesSubtitle').textContent = `${allExercises.length} ejercicio${allExercises.length !== 1 ? 's' : ''} guardado${allExercises.length !== 1 ? 's' : ''}`;
+
+      hideAllSections();
+      document.getElementById('favoritesSection').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    async function toggleFavoriteFromList(exerciseId) {
+      await toggleFavorite(exerciseId);
+      setTimeout(() => showFavorites(), 300);
+    }
+
+    function showProfile() {
+      if (!currentUser) {
+        showToast('Debes crear un perfil primero', 'error');
+        return;
+      }
+
+      document.getElementById('profileUsername').value = currentUser.username;
+      document.getElementById('profileWeight').value = currentUser.weight;
+      document.getElementById('profileHeight').value = currentUser.height;
+      document.getElementById('profileAge').value = currentUser.age;
+      document.getElementById('currentPassword').value = '';
+      document.getElementById('newPassword').value = '';
+
+      hideAllSections();
+      document.getElementById('profileSection').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('profileForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const currentPassword = document.getElementById('currentPassword').value;
+      const newPassword = document.getElementById('newPassword').value;
+      const weight = parseFloat(document.getElementById('profileWeight').value);
+      const height = parseFloat(document.getElementById('profileHeight').value);
+      const age = parseInt(document.getElementById('profileAge').value);
+
+      if (currentPassword !== currentUser.password) {
+        showToast('Contraseña actual incorrecta', 'error');
+        return;
+      }
+
+      const updateButton = document.getElementById('updateProfileButton');
+      updateButton.disabled = true;
+      updateButton.textContent = 'Actualizando...';
+
+      currentUser.weight = weight;
+      currentUser.height = height;
+      currentUser.age = age;
+      
+      if (newPassword) {
+        currentUser.password = newPassword;
+      }
+
+      if (window.dataSdk) {
+        const result = await window.dataSdk.update(currentUser);
+        if (result.isOk) {
+          showToast('Perfil actualizado exitosamente', 'success');
+          document.getElementById('currentPassword').value = '';
+          document.getElementById('newPassword').value = '';
+        } else {
+          showToast('Error al actualizar perfil', 'error');
+        }
+      } else {
+        showToast('Perfil actualizado exitosamente', 'success');
+      }
+
+      updateButton.disabled = false;
+      updateButton.textContent = 'Actualizar Perfil';
+    });
+
+    function hideAllSections() {
+      document.getElementById('heroSection').style.display = 'none';
+      document.getElementById('formSection').style.display = 'none';
+      document.getElementById('resultsSection').classList.remove('active');
+      document.getElementById('favoritesSection').classList.remove('active');
+      document.getElementById('profileSection').classList.remove('active');
+    }
+
+    function showForm() {
+      hideAllSections();
+      document.getElementById('heroSection').style.display = 'block';
+      document.getElementById('formSection').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToForm() {
+      document.getElementById('formSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showToast(message, type) {
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.add('slide-out');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ba961d840a01e7e',t:'MTc2Nzg1MTA1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
