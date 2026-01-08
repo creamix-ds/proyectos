@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empresa Corporativa | Soluciones Empresariales de Excelencia</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #1a1a2e;
+      overflow-x: hidden;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #e5e5e5;
+      padding: 20px 24px;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: #0f3460;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #4a4a68;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #0f3460;
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      background: #0f3460;
+      color: white !important;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: #16213e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(15, 52, 96, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 24px 80px;
+      background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      color: white;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 50px;
+      color: #d4af37;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+      animation: fadeInUp 0.8s ease-out 0.1s backwards;
+    }
+
+    .hero-subtitle {
+      font-size: 22px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.3s backwards;
+    }
+
+    .btn-primary {
+      padding: 18px 48px;
+      background: #d4af37;
+      color: #0f3460;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 17px;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.5);
+      background: #e5c158;
+    }
+
+    .btn-secondary {
+      padding: 18px 48px;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 17px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-3px);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 80px 24px;
+      background: white;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 48px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 32px;
+    }
+
+    .stat-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: #0f3460;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: #64648c;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 100px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(15, 52, 96, 0.1);
+      border-radius: 50px;
+      color: #0f3460;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: #0f3460;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .section-subtitle {
+      color: #64648c;
+      font-size: 19px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+    }
+
+    .service-card {
+      background: white;
+      border: 2px solid #e5e5e5;
+      border-radius: 20px;
+      padding: 48px 36px;
+      transition: all 0.4s;
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: #0f3460;
+      box-shadow: 0 20px 50px rgba(15, 52, 96, 0.15);
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(15, 52, 96, 0.2);
+    }
+
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f3460;
+      margin-bottom: 16px;
+    }
+
+    .service-card p {
+      color: #64648c;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* Values Section */
+    .values-section {
+      background: #f8f9fa;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .value-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.4s;
+    }
+
+    .value-card:hover {
+      border-color: #d4af37;
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.15);
+    }
+
+    .value-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .value-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f3460;
+      margin-bottom: 12px;
+    }
+
+    .value-card p {
+      color: #64648c;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .team-card {
+      text-align: center;
+      transition: transform 0.4s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .team-avatar {
+      width: 160px;
+      height: 160px;
+      background: linear-gradient(135deg, #0f3460 0%, #d4af37 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      margin: 0 auto 24px;
+      box-shadow: 0 12px 32px rgba(15, 52, 96, 0.2);
+    }
+
+    .team-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f3460;
+      margin-bottom: 8px;
+    }
+
+    .team-role {
+      color: #d4af37;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .team-bio {
+      color: #64648c;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+      color: white;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .contact-info p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-icon {
+      font-size: 28px;
+    }
+
+    .contact-text h4 {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .contact-text p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      margin: 0;
+    }
+
+    /* Contact Form */
+    .contact-form-wrapper {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #0f3460;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 16px;
+      background: #f8f9fa;
+      border: 2px solid #e5e5e5;
+      border-radius: 12px;
+      color: #1a1a2e;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #0f3460;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(15, 52, 96, 0.1);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: #9999b3;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: #0f3460;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 17px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #16213e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15, 52, 96, 0.4);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      padding: 20px 32px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.4s ease-out;
+      z-index: 2000;
+      backdrop-filter: blur(10px);
+    }
+
+    .toast.success {
+      background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+    }
+
+    .toast.error {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+    }
+
+    .slide-out {
+      animation: slideOut 0.3s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #0f3460;
+      color: white;
+      padding: 60px 24px 40px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .footer-text {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+      font-size: 15px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #d4af37;
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 20px;
+      }
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .contact-info h2 {
+        font-size: 32px;
+      }
+
+      .contact-form-wrapper {
+        padding: 32px 24px;
+      }
+
+      .services-grid,
+      .values-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="page-wrapper"><!-- Navbar -->
+   <nav class="navbar">
+    <div class="nav-content">
+     <div class="logo">
+      CORPORATIVA
+     </div>
+     <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#valores">Valores</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+     </ul>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="inicio" class="hero">
+    <div class="hero-content">
+     <div class="hero-badge">
+      Excelencia Empresarial
+     </div>
+     <h1>Soluciones corporativas que impulsan el éxito</h1>
+     <p class="hero-subtitle">Brindamos servicios profesionales de primer nivel para empresas que buscan crecer, innovar y liderar en sus industrias</p>
+     <div class="hero-buttons"><a href="#contacto" class="btn-primary">Solicitar consultoría</a> <a href="#servicios" class="btn-secondary">Conocer servicios</a>
+     </div>
+    </div>
+   </section><!-- Stats Section -->
+   <section class="stats-section">
+    <div class="stats-container">
+     <div class="stat-item"><span class="stat-icon">🏆</span> <span class="stat-number">+250</span> <span class="stat-label">Clientes Corporativos</span>
+     </div>
+     <div class="stat-item"><span class="stat-icon">🌎</span> <span class="stat-number">15+</span> <span class="stat-label">Países de Operación</span>
+     </div>
+     <div class="stat-item"><span class="stat-icon">💼</span> <span class="stat-number">25</span> <span class="stat-label">Años de Experiencia</span>
+     </div>
+     <div class="stat-item"><span class="stat-icon">⭐</span> <span class="stat-number">98%</span> <span class="stat-label">Satisfacción Cliente</span>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section id="servicios" class="section">
+    <div class="section-header">
+     <div class="section-badge">
+      Servicios
+     </div>
+     <h2 class="section-title">Soluciones integrales para empresas</h2>
+     <p class="section-subtitle">Ofrecemos servicios especializados diseñados para optimizar procesos y maximizar resultados</p>
+    </div>
+    <div class="services-grid">
+     <div class="service-card">
+      <div class="service-icon">
+       📊
+      </div>
+      <h3>Consultoría Estratégica</h3>
+      <p>Análisis profundo de tu negocio y desarrollo de estrategias personalizadas para alcanzar tus objetivos corporativos</p>
+     </div>
+     <div class="service-card">
+      <div class="service-icon">
+       💰
+      </div>
+      <h3>Gestión Financiera</h3>
+      <p>Optimización de recursos financieros, análisis de inversiones y planificación fiscal avanzada para tu empresa</p>
+     </div>
+     <div class="service-card">
+      <div class="service-icon">
+       ⚙️
+      </div>
+      <h3>Transformación Digital</h3>
+      <p>Implementación de tecnologías innovadoras para modernizar procesos y aumentar la eficiencia operativa</p>
+     </div>
+     <div class="service-card">
+      <div class="service-icon">
+       👥
+      </div>
+      <h3>Desarrollo Organizacional</h3>
+      <p>Fortalecimiento de equipos, cultura corporativa y estructuras organizacionales para impulsar el crecimiento</p>
+     </div>
+     <div class="service-card">
+      <div class="service-icon">
+       🎯
+      </div>
+      <h3>Marketing Corporativo</h3>
+      <p>Estrategias de posicionamiento, comunicación institucional y fortalecimiento de marca empresarial</p>
+     </div>
+     <div class="service-card">
+      <div class="service-icon">
+       📈
+      </div>
+      <h3>Análisis de Mercado</h3>
+      <p>Investigación detallada de mercados, competencia y oportunidades de expansión para tu negocio</p>
+     </div>
+    </div>
+   </section><!-- Values Section -->
+   <section id="valores" class="section values-section">
+    <div class="section-header">
+     <div class="section-badge">
+      Valores
+     </div>
+     <h2 class="section-title">Nuestros pilares fundamentales</h2>
+     <p class="section-subtitle">Principios que guían cada decisión y acción en nuestra organización</p>
+    </div>
+    <div class="values-grid">
+     <div class="value-card"><span class="value-icon">🎖️</span>
+      <h3>Excelencia</h3>
+      <p>Compromiso con la calidad superior en cada proyecto y servicio que entregamos</p>
+     </div>
+     <div class="value-card"><span class="value-icon">🤝</span>
+      <h3>Integridad</h3>
+      <p>Actuamos con transparencia, honestidad y ética en todas nuestras relaciones</p>
+     </div>
+     <div class="value-card"><span class="value-icon">🚀</span>
+      <h3>Innovación</h3>
+      <p>Buscamos constantemente nuevas formas de crear valor y mejorar procesos</p>
+     </div>
+     <div class="value-card"><span class="value-icon">💎</span>
+      <h3>Compromiso</h3>
+      <p>Dedicación total al éxito de nuestros clientes y sus objetivos empresariales</p>
+     </div>
+    </div>
+   </section><!-- Team Section -->
+   <section id="equipo" class="section">
+    <div class="section-header">
+     <div class="section-badge">
+      Equipo
+     </div>
+     <h2 class="section-title">Liderazgo profesional</h2>
+     <p class="section-subtitle">Expertos con trayectoria comprobada en sus áreas de especialización</p>
+    </div>
+    <div class="team-grid">
+     <div class="team-card">
+      <div class="team-avatar">
+       👨‍💼
+      </div>
+      <h3>Roberto Martínez</h3>
+      <p class="team-role">Director Ejecutivo</p>
+      <p class="team-bio">25 años liderando transformaciones empresariales en corporaciones multinacionales</p>
+     </div>
+     <div class="team-card">
+      <div class="team-avatar">
+       👩‍💼
+      </div>
+      <h3>Patricia González</h3>
+      <p class="team-role">Directora Financiera</p>
+      <p class="team-bio">Experta en estrategia financiera con MBA de institución internacional prestigiosa</p>
+     </div>
+     <div class="team-card">
+      <div class="team-avatar">
+       👨‍💻
+      </div>
+      <h3>Carlos Rodríguez</h3>
+      <p class="team-role">Director de Tecnología</p>
+      <p class="team-bio">Especialista en transformación digital y arquitectura empresarial avanzada</p>
+     </div>
+     <div class="team-card">
+      <div class="team-avatar">
+       👩‍⚖️
+      </div>
+      <h3>Ana Fernández</h3>
+      <p class="team-role">Directora Legal</p>
+      <p class="team-bio">Abogada corporativa con amplia experiencia en derecho empresarial internacional</p>
+     </div>
+     <div class="team-card">
+      <div class="team-avatar">
+       👨‍🎓
+      </div>
+      <h3>Miguel Torres</h3>
+      <p class="team-role">Director de Estrategia</p>
+      <p class="team-bio">Consultor estratégico con proyectos exitosos en Fortune 500 empresas</p>
+     </div>
+     <div class="team-card">
+      <div class="team-avatar">
+       👩‍🔬
+      </div>
+      <h3>Laura Sánchez</h3>
+      <p class="team-role">Directora de Innovación</p>
+      <p class="team-bio">Líder en innovación empresarial y desarrollo de nuevos modelos de negocio</p>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contacto" class="contact-section">
+    <div class="contact-container">
+     <div class="contact-info">
+      <h2>Conversemos sobre tu proyecto</h2>
+      <p>Estamos listos para ayudarte a llevar tu empresa al siguiente nivel. Contáctanos para una consultoría inicial sin compromiso.</p>
+      <div class="contact-details">
+       <div class="contact-item"><span class="contact-icon">📍</span>
+        <div class="contact-text">
+         <h4>Ubicación</h4>
+         <p>Av. Empresarial 1250, Buenos Aires</p>
+        </div>
+       </div>
+       <div class="contact-item"><span class="contact-icon">📞</span>
+        <div class="contact-text">
+         <h4>Teléfono</h4>
+         <p>+54 11 4567-8900</p>
+        </div>
+       </div>
+       <div class="contact-item"><span class="contact-icon">✉️</span>
+        <div class="contact-text">
+         <h4>Email</h4>
+         <p>contacto@corporativa.com</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="contact-form-wrapper">
+      <form id="contactForm">
+       <div class="form-group"><label for="name" class="form-label">Nombre completo</label> <input type="text" id="name" name="name" class="form-input" required placeholder="Tu nombre">
+       </div>
+       <div class="form-group"><label for="email" class="form-label">Email corporativo</label> <input type="email" id="email" name="email" class="form-input" required placeholder="tu@empresa.com">
+       </div>
+       <div class="form-group"><label for="phone" class="form-label">Teléfono</label> <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+54 11 1234-5678">
+       </div>
+       <div class="form-group"><label for="company" class="form-label">Empresa</label> <input type="text" id="company" name="company" class="form-input" required placeholder="Nombre de tu empresa">
+       </div>
+       <div class="form-group"><label for="message" class="form-label">Mensaje</label> <textarea id="message" name="message" class="form-textarea" required placeholder="Cuéntanos sobre tu proyecto o consulta..."></textarea>
+       </div><button type="submit" class="btn-submit" id="submitButton">Enviar consulta</button>
+      </form>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer>
+    <div class="footer-content">
+     <div class="footer-logo">
+      CORPORATIVA
+     </div>
+     <p class="footer-text">Soluciones empresariales de excelencia para corporaciones líderes</p>
+     <div class="footer-links"><a href="#inicio">Inicio</a> <a href="#servicios">Servicios</a> <a href="#equipo">Equipo</a> <a href="#valores">Valores</a> <a href="#contacto">Contacto</a>
+     </div>
+     <div class="footer-bottom">
+      <p>© 2024 Empresa Corporativa. Todos los derechos reservados.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    let currentRecordCount = 0;
+
+    // Data SDK Handler
+    const dataHandler = {
+      onDataChanged(data) {
+        currentRecordCount = data.length;
+      }
+    };
+
+    // Toast notification
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.add('slide-out');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // Initialize Data SDK
+    async function initDataSDK() {
+      if (window.dataSdk) {
+        const initResult = await window.dataSdk.init(dataHandler);
+        if (!initResult.isOk) {
+          console.error("Error inicializando Data SDK");
+        }
+      }
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Form submission with Data SDK
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      if (!window.dataSdk) {
+        showToast('Error: Sistema de guardado no disponible', 'error');
+        return;
+      }
+
+      if (currentRecordCount >= 999) {
+        showToast('Límite de consultas alcanzado. Contacta directamente.', 'error');
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitButton');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        company: document.getElementById('company').value,
+        message: document.getElementById('message').value,
+        date: new Date().toISOString()
+      };
+
+      const result = await window.dataSdk.create(formData);
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+
+      if (result.isOk) {
+        showToast('¡Gracias! Nos pondremos en contacto pronto.', 'success');
+        this.reset();
+      } else {
+        showToast('Error al enviar. Por favor intenta de nuevo.', 'error');
+      }
+    });
+
+    // Initialize on load
+    initDataSDK();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ba7750a241a1e7e',t:'MTc2NzgzMDg3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
